@@ -21,7 +21,7 @@ const updatestate = ({ onSearchinput }) => {
     return (
         <div className={styles['search-bar']}>
             <div className={styles.searchiconbox}><img  src='/image/search.png'></img></div> 
-            <input type="search"  name='msg' value={post.msg} onChange={handleInputChange} placeholder="Search messages" />
+            <input type="search" id='Searchipt' name='msg' value={post.msg} onChange={handleInputChange} placeholder="Search messages" />
         </div>
     );
 };

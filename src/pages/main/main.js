@@ -79,7 +79,6 @@ const Indexpage = () => {
         } catch (error) {
             console.log(error);
         }
-        console.log(FollowedList);
     }, [cachedlogindata, userdata, cacheduserData]);
 
     useEffect(() => {
@@ -131,7 +130,6 @@ const Indexpage = () => {
 
     const handleUpTrend = (stateobj) => {
         try {
-            console.log(stateobj.time);
             setloginFollowedTrendsList(prevList => [stateobj, ...prevList]);
         } catch (error) {
             console.log('error', error);
@@ -180,7 +178,7 @@ const Indexpage = () => {
             <main>
                 <div className={styles.container}>
                     <div className={styles.right}>
-                        <div className={styles["friend-requests"]}>
+                        <div className={styles["friend-requests"]} data-testid="followed-list">
                             <h4>Followed</h4>
                             {FollowedList.map((user, index) => (
                                 <Followeder key={index} user={user} onUnfollow={handleUnfollow} />

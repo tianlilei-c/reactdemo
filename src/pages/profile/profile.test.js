@@ -39,7 +39,6 @@ describe('<Profile />', () => {
         </MemoryRouter>
       </Provider>
     );
-
     // 验证 accountname 输入框的 placeholder 是否为预设的用户名
     expect(getByPlaceholderText('testUser')).toBeInTheDocument();
   });
