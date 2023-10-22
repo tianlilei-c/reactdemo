@@ -48,23 +48,21 @@ const Indexpage = () => {
         if (user) {
             updatelogindata(user)
             fetch('https://jsonplaceholder.typicode.com/posts')
-                .then(response => response.json()) // 返回response.json()的Promise
+                .then(response => response.json()) 
                 .then(data => {
                     updatejsonData(data);
                 }).catch(error => console.error(error))
             fetch('https://jsonplaceholder.typicode.com/users')
-                .then(response => response.json()) // 返回response.json()的Promise
+                .then(response => response.json()) 
                 .then(data => {
                     updateuserData(data);
                 }).catch(error => console.error(error))
-            console.log('这里有东西');
         }
     }, [])
 
     useEffect(() => {
         try {
             if (cacheduserData && cachedlogindata.id != null) {
-                console.log(cacheduserData);
                 const matchedUsers = cacheduserData.filter(user => {
                     return (
                         user.id === (cachedlogindata.id + 1) % 10 ||
@@ -90,7 +88,6 @@ const Indexpage = () => {
                 let matchedUsers = []
                 let trendsuserarr = []
                 trendsuserarr = [cachedlogindata.id];
-                // trendsuserarr = [cachedlogindata.id, ...FollowedList.map(user => user.id)];
                 cachedjsonData.forEach(obj => {
                     if (trendsuserarr.includes(obj.userId)) {
                         matchedUsers.push(obj);
@@ -143,7 +140,6 @@ const Indexpage = () => {
 
     const handleAddfollow = (addmsg) => {
         const filteredData = cacheduserData.filter((obj) => obj.username === addmsg.name);
-        console.log('搜索到的用户', filteredData);
         if (filteredData.length > 0) {
             setloginFollowedList(filteredData.concat(FollowedList));
             toast.success("ADD FOLLOW SUCCESS!");
@@ -171,29 +167,19 @@ const Indexpage = () => {
                     <h2 className={styles.log}>
                     </h2>
                     <div className={styles.create}>
-                        {/* <label className={`${styles.btn} ${styles['btn-primaryup']}`} htmlFor="create-post">update</label> */}
-                        {/* <p>State:{cachedlogindata.company.catchPhrase}</p> */}
-                        {/* <p>State: {cachedlogindata.company?.catchPhrase}</p> */}
                         <p>State: {cachedlogindata && cachedlogindata.company && cachedlogindata.company.catchPhrase}</p>
-                        {/* <p>{cachedlogindata.name}</p> */}
                         <p>{cachedlogindata && cachedlogindata.username && cachedlogindata.username}</p>
                         <div className={styles.profilePhoto}>
                             <img src="/image/tx1.jpg" alt="My Image" />
                         </div>
                         <Link to="/profile" className={`${styles.btn} ${styles['btn-primaryup']}`} htmlFor="create-post">Profile</Link>
                         <Link to="/auth" className={`${styles['btn-primaryout']}`} htmlFor="create-post">logout</Link>
-
                     </div>
                 </div>
             </nav>
-
-            {/* <!-- =================MAIN=================--> */}
             <main>
                 <div className={styles.container}>
-                    {/* <!-- =================RIGHT=================--> */}
                     <div className={styles.right}>
-
-                        {/* <!-- =================FRIEND REQUESTS=================--> */}
                         <div className={styles["friend-requests"]}>
                             <h4>Followed</h4>
                             {FollowedList.map((user, index) => (
@@ -201,27 +187,19 @@ const Indexpage = () => {
                             ))}
                         </div>
                     </div>
-
-                    {/* <!-- =================MIDDLE=================--> */}
                     <div className={styles.middle}>
                         <Searchbar onSearchinput={handleSearch} />
-                        {/* <!-- =================FEEDS=================--> */}
                         {FollowedTrendsList.map((user, index) => (
                             <Trends key={index} user={user} onUnfollow={handleUnfollow} />
                         ))}
                     </div>
-                    {/* <!-- =================END OF MIDDLE=================--> */}
-                    {/* <!-- =================LEFT=================--> */}
                     <div className={styles.left}>
                         <Updatestate handleupstate={handleUpstate} />
                         <Updatetrend handleuptrend={handleUpTrend} />
                         <Addfollow handleaddfollow={handleAddfollow} />
                     </div>
                 </div>
-
             </main>
-
-
         </>
     )
 }

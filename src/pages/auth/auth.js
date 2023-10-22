@@ -221,7 +221,7 @@ const Login = () => {
                         <input
                             id="username"
                             name="username"
-                            placeholder="Your account name"
+                            placeholder="register:Your account name"
                             className={stylel.form_input}
                             required
                             value={formData.username}
@@ -281,7 +281,7 @@ const Login = () => {
                             id="pwd"
                             name="pwd"
                             className={stylel.form_input}
-                            placeholder="Password"
+                            placeholder="enter your Password"
                             required
                             value={formData.pwd}
                             onChange={handleInputChange}
@@ -336,7 +336,7 @@ const Login = () => {
                     <div className={`${stylel.switch_container} ${isFormSwitched ? stylel['is-hidden'] : ''}`} id="switch-c1">
                         <h2 className={`${stylel.switch_title} ${stylel.title}`} stylel={{ letterSpacing: '0' }}> Hello Friend！</h2>
                         <p className={`${stylel.switch_description} ${stylel.description}`}>Go register an account and become an esteemed fan member, let us embark on a marvelous journey!</p>
-                        <button className={`${stylel.switch_button} ${stylel.button} ${stylel['switch-btn']}`} onClick={handleFormSwitch}>SIGN IN</button>
+                        <button className={`${stylel.switch_button} ${stylel.button} ${stylel['switch-btn']}`} onClick={handleFormSwitch}>SIGN IN Form</button>
                     </div>
 
                     <div className={`${stylel.switch_container} ${isFormSwitched ? '' : stylel['is-hidden']}`} id="switch-c2">

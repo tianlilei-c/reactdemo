@@ -23,13 +23,14 @@ const Login = () => {
     });
 
     useEffect(() => {
+        console.log('初始化执行了');
         updatelogindata(null)
         localStorage.removeItem('user');
     }, [])
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json()) 
+            .then(response => response.json())
             .then(data => {
                 updateuserData(data);
             }).catch(error => console.error(error))
@@ -43,7 +44,7 @@ const Login = () => {
     };
 
     const loginbtnsubmit = (e) => {
-        e.preventDefault(); // 阻止默认提交行为
+        e.preventDefault(); 
         const matchedUser = cacheduserData.filter(user => {
             return (
                 user.username === loginformData.loginaccountname &&
@@ -51,14 +52,12 @@ const Login = () => {
             );
         });
         if (matchedUser.length === 1) {
-            console.log(matchedUser[0]);
             updatelogindata(matchedUser[0]);
             const userString = JSON.stringify(matchedUser[0]);
             localStorage.setItem('user', userString);
             toast.success("login success");
             history.push("/");
         } else {
-            console.log(false);
             toast.error("password Error or Incorrect password ");
         }
     };
@@ -67,28 +66,28 @@ const Login = () => {
         <div className={stylel.body}>
             <div className={stylel.shell}>
                 <form action="" method="" className={stylel.form} id="b-form" onSubmit={loginbtnsubmit}>
-                        <h2 className={`${stylel.form_title} ${stylel.title}`}>Login</h2>
-                        <span className={stylel.form_span}>Please enter your Email and Password</span>
-                        <input
-                            name="loginaccountname"
-                            placeholder="Your account name"
-                            className={stylel.form_input}
-                            required
-                            value={loginformData.loginaccountname}
-                            onChange={handleloginInputChange}
-                        />
-                        <input
-                            type="password"
-                            name="loginpwd"
-                            className={stylel.form_input}
-                            placeholder="Password"
-                            required
-                            value={loginformData.loginpwd}
-                            onChange={handleloginInputChange}
-                        />
-                        <a className={stylel.form_link}>If you forget password please click here.</a>
-                        <button className={`${stylel.form_button} ${stylel.button} ${stylel.submit}`} type="submit">SIGN IN</button>
-                    </form>
+                    <h2 className={`${stylel.form_title} ${stylel.title}`}>Login</h2>
+                    <span className={stylel.form_span}>Please enter your Email and Password</span>
+                    <input
+                        name="loginaccountname"
+                        placeholder="Your account name"
+                        className={stylel.form_input}
+                        required
+                        value={loginformData.loginaccountname}
+                        onChange={handleloginInputChange}
+                    />
+                    <input
+                        type="password"
+                        name="loginpwd"
+                        className={stylel.form_input}
+                        placeholder="Password"
+                        required
+                        value={loginformData.loginpwd}
+                        onChange={handleloginInputChange}
+                    />
+                    <a className={stylel.form_link}>If you forget password please click here.</a>
+                    <button className={`${stylel.form_button} ${stylel.button} ${stylel.submit}`} type="submit">SIGN IN</button>
+                </form>
             </div>
         </div>
 
