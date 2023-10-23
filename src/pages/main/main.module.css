@@ -533,6 +533,12 @@ main .container .left .profile {
   margin: 0.6rem;
 }
 
+.middle .feed .action-comment{
+  align-items: center;
+  font-size: 1.4rem;
+  margin: 0.6rem;
+}
+
 .middle .liked-by {
   display: flex;
 }

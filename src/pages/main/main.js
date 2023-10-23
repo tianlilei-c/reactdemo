@@ -40,6 +40,8 @@ const Indexpage = () => {
     const cachedlogindata = useMemo(() => logindata, [logindata]);
     const updatelogindata = (newData) => {
         dispatch({ type: 'LOGIN_DATA', payload: newData });
+        let userobj = JSON.stringify(newData)
+        localStorage.setItem('user', userobj)
     };
 
     useEffect(() => {
@@ -48,12 +50,12 @@ const Indexpage = () => {
         if (user) {
             updatelogindata(user)
             fetch('https://jsonplaceholder.typicode.com/posts')
-                .then(response => response.json()) 
+                .then(response => response.json())
                 .then(data => {
                     updatejsonData(data);
                 }).catch(error => console.error(error))
             fetch('https://jsonplaceholder.typicode.com/users')
-                .then(response => response.json()) 
+                .then(response => response.json())
                 .then(data => {
                     updateuserData(data);
                 }).catch(error => console.error(error))
@@ -85,13 +87,17 @@ const Indexpage = () => {
         if (chagetrendarr) {
             try {
                 let matchedUsers = []
-                let trendsuserarr = []
-                trendsuserarr = [cachedlogindata.id];
-                cachedjsonData.forEach(obj => {
-                    if (trendsuserarr.includes(obj.userId)) {
-                        matchedUsers.push(obj);
+                const trendsuserarr = [cachedlogindata.id];
+                const updatedTrendsUserArr = [
+                    ...trendsuserarr,
+                    ...FollowedList.map(item => item.id)
+                ];
+                cachedjsonData.forEach(postobj => {
+                    if (updatedTrendsUserArr.includes(postobj.userId)) {
+                        matchedUsers.push(postobj);
                     }
                 });
+                matchedUsers.reverse();
                 setloginFollowedTrendsList(matchedUsers);
             } catch (error) {
                 console.log(error);
@@ -124,17 +130,20 @@ const Indexpage = () => {
         if (user || cachedlogindata) {
             updatelogindata(user)
         } else {
-                history.push("/auth");
+            history.push("/auth");
         }
     }, [])
 
     const handleUpTrend = (stateobj) => {
         try {
             setloginFollowedTrendsList(prevList => [stateobj, ...prevList]);
+            updatejsonData([stateobj, ...jsondata]); // 更新 Redux store 中的 jsondata 数组
         } catch (error) {
             console.log('error', error);
         }
     };
+
+
 
     const handleAddfollow = (addmsg) => {
         const filteredData = cacheduserData.filter((obj) => obj.username === addmsg.name);

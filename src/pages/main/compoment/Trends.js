@@ -6,8 +6,8 @@ const Trends = ({ user }) => {
     const logindata = useSelector(state => state.logindata);
     const [startTime, setStartTime] = useState(null);
     useEffect(() => {
-        const timestamp = Date.now(); 
-        setStartTime(timestamp); 
+        const timestamp = Date.now();
+        setStartTime(timestamp);
     }, []);
     return (
         <div className={styles.feeds}>
@@ -25,9 +25,14 @@ const Trends = ({ user }) => {
                     </div>
                 </div>
 
-                <div className={styles.photo}>
-                    <img src="/image/1.jpg" />
-                </div>
+                {user.isTextOnly !== true && (
+                    <div className={styles.photo}>
+                        <img src="/image/1.jpg" alt="Post Photo" />
+                    </div>
+                )}
+                {user.isTextOnly && (
+                    <div className={styles.body}>{user.body}</div>
+                )}
 
                 <div className={styles['action-buttons']}>
                     <div className={styles['interaction-buttons']}>
@@ -41,8 +46,16 @@ const Trends = ({ user }) => {
                     </div>
                     <div className={styles.bookmark}>
                         <button className={styles['image-button']}>
-                            <img src="/image/bj.png" alt="Button Image"/>
+                            <img src="/image/bj.png" alt="Button Image" />
                         </button>
+                    </div>
+                </div>
+                <div className={styles['action-comment']}>
+                    <div>
+                        Mrs. Dennis Schulist：Soo cool!
+                    </div>
+                    <div>
+                        Elwyn.Skiles：I want too!
                     </div>
                 </div>
             </div>

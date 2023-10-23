@@ -7,7 +7,6 @@ const Followeder = ({ user,onUnfollow }) => {
     };
     return (
         <div className={styles.request}>
-            <p>用户存在关注列表</p>
             <div className={styles.info}>
                 <div className={styles["profile-followphoto"]}>
                     <img className={styles["profile-followphoto-img"]}  src="/image/2.jpg" alt="Profile Photo" />
