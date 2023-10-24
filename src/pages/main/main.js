@@ -150,7 +150,7 @@ const Indexpage = () => {
     const handleUpTrend = (stateobj) => {
         try {
             setloginFollowedTrendsList(prevList => [stateobj, ...prevList]);
-            updatejsonData([stateobj, ...jsondata]); // 更新 Redux store 中的 jsondata 数组
+            updatejsonData([stateobj, ...jsondata]);
         } catch (error) {
         }
     };

@@ -9,7 +9,6 @@ const Trends = ({ user }) => {
 
 
     useEffect(() => {
-        console.log('动态组件拿到的信息',user);
         const timestamp = Date.now();
         const date = new Date(timestamp);
         const year = date.getFullYear();

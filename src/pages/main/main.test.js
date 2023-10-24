@@ -370,7 +370,6 @@ describe('<Main />', () => {
     });
 
     it('should set FollowedTrendsList with correct data', async () => {
-        // 模拟 'https://jsonplaceholder.typicode.com/posts' 请求的响应
         const postData = [
             {
                 "userId": 1,
@@ -390,7 +389,6 @@ describe('<Main />', () => {
                 "title": "ea molestias quasi exercitationem repellat qui ipsa sit aut",
                 "body": "et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut"
             },
-            // ... 其他数据
         ];
 
         fetchMock.mockResponses(
@@ -450,9 +448,7 @@ describe('<Main />', () => {
                 </MemoryRouter>
             </Provider>
         );
-        // 使用 queryAllByText 方法获取所有包含文字 "Bret" 的元素
         const bretElements = screen.queryAllByText('Bret');
-        // 断言至少有一个元素存在
         expect(bretElements.length).toBeGreaterThan(0);
     });
 

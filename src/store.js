@@ -13,7 +13,6 @@ function reducer(state = {}, action) {
   }
 }
 
-// 创建 store
 const store = configureStore({ reducer });
 
 export default store;

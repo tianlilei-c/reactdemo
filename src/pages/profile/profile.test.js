@@ -29,7 +29,6 @@ describe('<Profile />', () => {
   });
 
   it('Verify the username of the logged in user', () => {
-    // 模拟用户已登录
     const user = { username: 'testUser', email: 'testUser@test.com', phone: '123-456-7890', address: { street: 'testStreet', zipcode: '12345' } };
     localStorage.setItem('user', JSON.stringify(user));
     fetchMock.mockResponse(JSON.stringify({}));
@@ -40,7 +39,6 @@ describe('<Profile />', () => {
         </MemoryRouter>
       </Provider>
     );
-    // 验证 accountname 输入框的 placeholder 是否为预设的用户名
     expect(getByPlaceholderText('testUser')).toBeInTheDocument();
   });
 
@@ -53,7 +51,6 @@ describe('<Profile />', () => {
       </Provider>
     );
 
-    // 等待 pushSpy 被调用
     await waitFor(() => {
       expect(pushSpy).toHaveBeenCalledWith('/auth');
     });
@@ -61,7 +58,6 @@ describe('<Profile />', () => {
   });
 
   it('should update store when form submitted with valid data', () => {
-    // 省略其他代码...
     const { getByPlaceholderText, getByText } = render(
       <Provider store={store}>
         <Router history={history}>
@@ -100,5 +96,4 @@ describe('<Profile />', () => {
     fireEvent.click(getByText('Back To MAIN'));
     expect(pushSpy).toHaveBeenCalledWith('/');
   });
-
 });

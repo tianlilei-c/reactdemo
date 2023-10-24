@@ -23,8 +23,6 @@ describe('<Login />', () => {
     fetchMock.resetMocks();
     toast.error = jest.fn()
     toast.success = jest.fn()
-
-    // 模拟用户已登录
     const user = { username: 'testUser', email: 'testUser@test.com', phone: '123-456-7890', address: { street: 'testStreet', zipcode: '12345' } };
     localStorage.setItem('user', JSON.stringify(user));
   });

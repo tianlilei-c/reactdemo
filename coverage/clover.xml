@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698151268394" clover="3.2.0">
-  <project timestamp="1698151268394" name="All files">
-    <metrics statements="314" coveredstatements="292" conditionals="134" coveredconditionals="100" methods="105" coveredmethods="86" elements="553" coveredelements="478" complexity="0" loc="314" ncloc="314" packages="4" files="9" classes="9"/>
+<coverage generated="1698152089732" clover="3.2.0">
+  <project timestamp="1698152089732" name="All files">
+    <metrics statements="312" coveredstatements="290" conditionals="134" coveredconditionals="100" methods="105" coveredmethods="86" elements="551" coveredelements="476" complexity="0" loc="312" ncloc="312" packages="4" files="9" classes="9"/>
     <package name="auth">
       <metrics statements="86" coveredstatements="80" conditionals="34" coveredconditionals="23" methods="24" coveredmethods="20"/>
       <file name="auth.js" path="E:\work\reacttest\reactdemo\src\pages\auth\auth.js">
@@ -200,7 +200,7 @@
       </file>
     </package>
     <package name="main.compoment">
-      <metrics statements="83" coveredstatements="75" conditionals="23" coveredconditionals="19" methods="35" coveredmethods="25"/>
+      <metrics statements="82" coveredstatements="74" conditionals="23" coveredconditionals="19" methods="35" coveredmethods="25"/>
       <file name="Addfollow.js" path="E:\work\reacttest\reactdemo\src\pages\main\compoment\Addfollow.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="4" count="1" type="stmt"/>
@@ -232,7 +232,7 @@
         <line num="21" count="22" type="stmt"/>
       </file>
       <file name="Trends.js" path="E:\work\reacttest\reactdemo\src\pages\main\compoment\Trends.js">
-        <metrics statements="18" coveredstatements="18" conditionals="11" coveredconditionals="10" methods="5" coveredmethods="5"/>
+        <metrics statements="17" coveredstatements="17" conditionals="11" coveredconditionals="10" methods="5" coveredmethods="5"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="66" type="stmt"/>
         <line num="7" count="47" type="stmt"/>
@@ -247,10 +247,9 @@
         <line num="18" count="19" type="stmt"/>
         <line num="19" count="19" type="stmt"/>
         <line num="20" count="19" type="stmt"/>
-        <line num="21" count="19" type="stmt"/>
-        <line num="25" count="47" type="stmt"/>
-        <line num="26" count="77" type="stmt"/>
-        <line num="28" count="47" type="stmt"/>
+        <line num="24" count="47" type="stmt"/>
+        <line num="25" count="77" type="stmt"/>
+        <line num="27" count="47" type="stmt"/>
       </file>
       <file name="Updatestate.js" path="E:\work\reacttest\reactdemo\src\pages\main\compoment\Updatestate.js">
         <metrics statements="12" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
@@ -304,9 +303,9 @@
       </file>
     </package>
     <package name="profile">
-      <metrics statements="46" coveredstatements="44" conditionals="34" coveredconditionals="24" methods="12" coveredmethods="10"/>
+      <metrics statements="45" coveredstatements="43" conditionals="34" coveredconditionals="24" methods="12" coveredmethods="10"/>
       <file name="profile.js" path="E:\work\reacttest\reactdemo\src\pages\profile\profile.js">
-        <metrics statements="46" coveredstatements="44" conditionals="34" coveredconditionals="24" methods="12" coveredmethods="10"/>
+        <metrics statements="45" coveredstatements="43" conditionals="34" coveredconditionals="24" methods="12" coveredmethods="10"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="9" type="stmt"/>
         <line num="11" count="9" type="stmt"/>
@@ -320,39 +319,38 @@
         <line num="22" count="5" type="stmt"/>
         <line num="23" count="5" type="cond" truecount="2" falsecount="0"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="31" count="9" type="stmt"/>
-        <line num="40" count="9" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="48" count="9" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="50" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="30" count="9" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="47" count="9" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="54" count="5" type="cond" truecount="5" falsecount="0"/>
-        <line num="55" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
+        <line num="53" count="5" type="cond" truecount="5" falsecount="0"/>
+        <line num="54" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="72" count="9" type="stmt"/>
-        <line num="73" count="7" type="cond" truecount="4" falsecount="0"/>
-        <line num="74" count="5" type="stmt"/>
-        <line num="77" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="79" count="2" type="stmt"/>
-        <line num="80" count="6" type="cond" truecount="1" falsecount="1"/>
-        <line num="81" count="6" type="stmt"/>
-        <line num="85" count="2" type="stmt"/>
-        <line num="87" count="9" type="stmt"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="113" count="9" type="stmt"/>
+        <line num="71" count="9" type="stmt"/>
+        <line num="72" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="73" count="5" type="stmt"/>
+        <line num="76" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="79" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="80" count="6" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="86" count="9" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="112" count="9" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
         <line num="114" count="1" type="stmt"/>
-        <line num="115" count="1" type="stmt"/>
-        <line num="118" count="9" type="stmt"/>
-        <line num="121" count="9" type="stmt"/>
+        <line num="117" count="9" type="stmt"/>
+        <line num="120" count="9" type="stmt"/>
       </file>
     </package>
   </project>

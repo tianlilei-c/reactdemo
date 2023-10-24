@@ -21,7 +21,6 @@ const Profile = () => {
         const userString = localStorage.getItem('user');
         const user = JSON.parse(userString);
         if (user) {
-            console.log('执行了这里');
             updatelogindata(user)
         } else {
             history.push("/auth");
