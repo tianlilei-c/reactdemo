@@ -9,8 +9,9 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 const history = createMemoryHistory();
 const pushSpy = jest.spyOn(history, 'push');
+import { ToastContainer, toast } from "react-toastify";
 
-import Profile from './profile_copy.js';
+import Profile from './profile.js';
 const mockStore = configureStore([]);
 describe('<Profile />', () => {
   let store;
@@ -20,7 +21,7 @@ describe('<Profile />', () => {
     });
     store.dispatch = jest.fn();
     fetchMock.resetMocks();
-
+    toast.error = jest.fn();
   });
 
   afterEach(() => {
@@ -58,4 +59,46 @@ describe('<Profile />', () => {
     });
     fetchMock.mockResponse(JSON.stringify({}));
   });
+
+  it('should update store when form submitted with valid data', () => {
+    // 省略其他代码...
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Profile />
+        </Router>
+      </Provider>
+    );
+    fireEvent.change(getByPlaceholderText('Your e-mail address'), { target: { value: 'newEmail@test.com' } });
+    fireEvent.change(getByPlaceholderText('Phone:123-123-1234'), { target: { value: '987-654-3210' } });
+    fireEvent.click(getByText('Update'));
+    expect(store.dispatch).toHaveBeenCalled();
+  });
+
+  it('should show error toast when password does not match password confirmation', () => {
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Profile />
+        </Router>
+      </Provider>
+    );
+    fireEvent.change(getByPlaceholderText('Password'), { target: { value: 'password' } });
+    fireEvent.change(getByPlaceholderText('Password confirmation'), { target: { value: 'password1' } });
+    fireEvent.click(getByText('Update'));
+    expect(toast.error).toHaveBeenCalledWith('The password confirmation must be the same as the password');
+  });
+
+  it('click to Main', () => {
+    const {getByText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Profile />
+        </Router>
+      </Provider>
+    );
+    fireEvent.click(getByText('Back To MAIN'));
+    expect(pushSpy).toHaveBeenCalledWith('/');
+  });
+
 });

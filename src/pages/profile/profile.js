@@ -62,7 +62,6 @@ const Login = () => {
                 });
                 updatelogindata(obj);
             } catch (error) {
-                console.log('error', error);
             }
 
         } else {
@@ -110,8 +109,6 @@ const Login = () => {
                 bs: ""
             }
         });
-
-
     };
 
     const tohome = () => {
@@ -119,19 +116,7 @@ const Login = () => {
         console.log(cachelogindata);
     }
 
-    const [selectedImage, setSelectedImage] = useState(null);
-
     const handleImageUpload = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            setSelectedImage(reader.result);
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
     };
 
     return (
@@ -144,11 +129,6 @@ const Login = () => {
 
                 <label htmlFor="file" className={stylel.inputimglabel} >Update Profile Picture</label>
                 <input type="file" name='file' id='file' accept="image/*" onChange={handleImageUpload} className={stylel.inputimg} ></input>
-                {/* {selectedImage && (
-                    <div>
-                        <img src={selectedImage} className={stylel.imgdiv} alt="Selected" />
-                    </div>
-                )} */}
             </div>
             <div className={stylel.shell}>
                 {/* register form */}
