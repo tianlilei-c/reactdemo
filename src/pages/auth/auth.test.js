@@ -4,9 +4,10 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import fetchMock from 'jest-fetch-mock';
 import configureStore from 'redux-mock-store';
-import { MemoryRouter } from 'react-router-dom'; // 导入MemoryRouter
-
-import Login from './auth copy';
+import { createMemoryHistory } from 'history';
+import { MemoryRouter, Router } from 'react-router-dom';
+import { toast } from "react-toastify";
+import Login from './auth';
 
 const mockStore = configureStore([]);
 
@@ -20,6 +21,8 @@ describe('<Login />', () => {
     });
     store.dispatch = jest.fn();
     fetchMock.resetMocks();
+    toast.error = jest.fn()
+    toast.success = jest.fn()
 
     // 模拟用户已登录
     const user = { username: 'testUser', email: 'testUser@test.com', phone: '123-456-7890', address: { street: 'testStreet', zipcode: '12345' } };
@@ -94,4 +97,63 @@ describe('<Login />', () => {
       });
     });
   });
+
+  it('register different password input', async () => {
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <Login />
+      </Provider>
+    );
+    fireEvent.change(getByPlaceholderText('register:Your account name'), { target: { value: 'TestMan' } });
+    fireEvent.change(getByPlaceholderText('Your display name(optional)'), { target: { value: 'James Bond' } });
+    fireEvent.change(getByPlaceholderText('Your e-mail address'), { target: { value: 'xj3212@gmail.com' } });
+    fireEvent.change(getByPlaceholderText('Phone:123-123-1234'), { target: { value: '187-227-7457' } });
+    fireEvent.change(getByPlaceholderText('Birthday:19991231'), { target: { value: '19931001' } });
+    fireEvent.change(getByPlaceholderText('Valid five-digit zip code'), { target: { value: '43221' } });
+    fireEvent.change(getByPlaceholderText('enter your Password'), { target: { value: 'Aa12345.' } });
+    fireEvent.change(getByPlaceholderText('Password confirmation'), { target: { value: 'Aa12345.1' } });
+    fireEvent.click(getByText('SIGN UP'));
+    expect(toast.error).toHaveBeenCalledWith('The password confirmation must be the same as the password');
+  })
+
+  it('register neckname test false', async () => {
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <Login />
+      </Provider>
+    );
+    fireEvent.change(getByPlaceholderText('register:Your account name'), { target: { value: '12341243' } });
+    fireEvent.change(getByPlaceholderText('Your display name(optional)'), { target: { value: 'James Bond' } });
+    fireEvent.change(getByPlaceholderText('Your e-mail address'), { target: { value: 'xj3212@gmail.com' } });
+    fireEvent.change(getByPlaceholderText('Phone:123-123-1234'), { target: { value: '187-227-7457' } });
+    fireEvent.change(getByPlaceholderText('Birthday:19991231'), { target: { value: '19931001' } });
+    fireEvent.change(getByPlaceholderText('Valid five-digit zip code'), { target: { value: '43221' } });
+    fireEvent.change(getByPlaceholderText('enter your Password'), { target: { value: 'Aa12345.' } });
+    fireEvent.change(getByPlaceholderText('Password confirmation'), { target: { value: 'Aa12345.' } });
+    fireEvent.click(getByText('SIGN UP'));
+    expect(toast.error).toHaveBeenCalledWith('Account name must start with letters and be combined of letters or letters and numbers');
+  })
+
+  it('register neckname test right', async () => {
+    const history = createMemoryHistory();
+    const pushSpy = jest.spyOn(history, 'push');
+    const { getByPlaceholderText, getByText } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <Login />
+        </Router>
+      </Provider>
+    );
+    fireEvent.change(getByPlaceholderText('register:Your account name'), { target: { value: 'Aa1231' } });
+    fireEvent.change(getByPlaceholderText('Your display name(optional)'), { target: { value: 'James Bond' } });
+    fireEvent.change(getByPlaceholderText('Your e-mail address'), { target: { value: 'xj3212@gmail.com' } });
+    fireEvent.change(getByPlaceholderText('Phone:123-123-1234'), { target: { value: '187-217-7457' } });
+    fireEvent.change(getByPlaceholderText('Birthday:19991231'), { target: { value: '19931001' } });
+    fireEvent.change(getByPlaceholderText('Valid five-digit zip code'), { target: { value: '43221' } });
+    fireEvent.change(getByPlaceholderText('enter your Password'), { target: { value: 'Aa12345.' } });
+    fireEvent.change(getByPlaceholderText('Password confirmation'), { target: { value: 'Aa12345.' } });
+    fireEvent.click(getByText('SIGN UP'));
+    expect(toast.success).toHaveBeenCalledWith('two password is same');
+    expect(pushSpy).toHaveBeenCalledWith('/');
+  })
 });

@@ -1,13 +1,12 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import stylel from './profile.module.css';
-// import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Profile = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [isFormSwitched, setIsFormSwitched] = useState(false);
@@ -270,4 +269,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Profile;

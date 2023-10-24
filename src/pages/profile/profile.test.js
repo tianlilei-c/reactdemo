@@ -9,7 +9,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 const history = createMemoryHistory();
 const pushSpy = jest.spyOn(history, 'push');
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 
 import Profile from './profile.js';
 const mockStore = configureStore([]);

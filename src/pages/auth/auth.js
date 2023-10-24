@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import stylel from './auth.module.css';
-// import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,8 +16,6 @@ const Login = () => {
         dispatch({ type: 'UPDATE_USERDATA', payload: newData });
     };
 
-    const jsondata = useSelector(state => state.jsondata);
-    const cachedjsonData = useMemo(() => jsondata, [jsondata]);
     const updatejsonData = (newData) => {
         dispatch({ type: 'UPDATE_JSONDATA', payload: newData });
     };
@@ -63,12 +60,12 @@ const Login = () => {
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json()) 
+            .then(response => response.json())
             .then(data => {
                 updatejsonData(data);
             }).catch(error => console.error(error))
         fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json()) 
+            .then(response => response.json())
             .then(data => {
                 updateuserData(data);
             }).catch(error => console.error(error))
@@ -113,6 +110,7 @@ const Login = () => {
 
     const pwdcheck = () => {
         if (formData.pwd === formData.pwdcon) {
+            toast.success("two password is same");
             return true;
         } else {
             toast.error("The password confirmation must be the same as the password")
@@ -131,24 +129,17 @@ const Login = () => {
     };
 
     const btnsubmit = (e) => {
-        e.preventDefault(); 
-        let state = bdaycheck() && pwdcheck() && namecheck()
-        console.log('注册前的信息formData', formData);
-        // updatelogindata(formData)
-        console.log('state', state);
+        e.preventDefault();
+        let state = namecheck() && bdaycheck() && pwdcheck()
         if (state) {
             updatelogindata(formData);
             const userString = JSON.stringify(formData);
             localStorage.setItem('user', userString);
-            toast.success("注册成功");
+            toast.success("success Sign up");
             history.push("/");
         }
         return state
     };
-
-    useEffect(() => {
-
-    }, [])
 
     const handleFormSwitch = () => {
         setIsFormSwitched(!isFormSwitched);
@@ -342,7 +333,7 @@ const Login = () => {
                     <div className={`${stylel.switch_container} ${isFormSwitched ? '' : stylel['is-hidden']}`} id="switch-c2">
                         <h2 className={`${stylel.switch_title} ${stylel.title}`} stylel={{ letterSpacing: '0' }}>Welcome Back!</h2>
                         <p className={`${stylel.switch_description} ${stylel.description}`}>Do you already have an account? Go log in to your account and enter the wonderful world!</p>
-                        <button className={`${stylel.switch_button} ${stylel.button} ${stylel['switch-btn']}`} onClick={handleFormSwitch}>SIGN UP</button>
+                        <button className={`${stylel.switch_button} ${stylel.button} ${stylel['switch-btn']}`} onClick={handleFormSwitch}>To SIGN UP</button>
                     </div>
                 </div>
             </div>
