@@ -33,7 +33,7 @@ const updatestate = ({ handleaddfollow}) => {
                 />
                 <input
                     type="submit"
-                    value="Add"
+                    value="Add followers"
                     className={`${styles.btn} ${styles.btnPrimary}`}
                 />
             </form>

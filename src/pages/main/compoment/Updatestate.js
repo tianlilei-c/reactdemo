@@ -25,7 +25,6 @@ const updatestate = ({ handleupstate}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('post',post);
         handleupstate(post)
     };
     return (

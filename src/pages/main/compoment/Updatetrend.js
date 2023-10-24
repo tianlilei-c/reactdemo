@@ -10,9 +10,6 @@ const updatestate = ({ handleuptrend }) => {
     isTextOnly: true,
     name: null
   });
-
-
-
   useEffect(() => {
     const userString = localStorage.getItem('user');
     const user = userString ? JSON.parse(userString) : null;
@@ -27,7 +24,6 @@ const updatestate = ({ handleuptrend }) => {
   useEffect(() => {
     if (post.time !== null) {
       handleuptrend(post)
-      console.log(post);
     }
   }, [post.time]);
 
@@ -62,10 +58,17 @@ const updatestate = ({ handleuptrend }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const timestamp = Date.now();
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
     if (post.title !== '' && post.body !== '') {
       setPost(prevPost => ({
         ...prevPost,
-        time: timestamp
+        time: `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
       }));
     }
   };
@@ -113,6 +116,7 @@ const updatestate = ({ handleuptrend }) => {
           type="submit"
           value="Post"
           className={`${styles.btn} ${styles.btnPrimary}`}
+          data-testid="post-button"
         />
         <label htmlFor="isTextOnly" className={styles.textOnlyLabel}>
           <input

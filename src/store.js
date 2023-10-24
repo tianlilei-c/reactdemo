@@ -1,9 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-// 定义 reducer
 function reducer(state = {}, action) {
   switch (action.type) {
-    // 处理不同的 action
     case 'UPDATE_USERDATA':
       return { ...state, userdata: action.payload };
     case 'UPDATE_JSONDATA':

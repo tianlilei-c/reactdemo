@@ -53,12 +53,12 @@ const Indexpage = () => {
                 .then(response => response.json())
                 .then(data => {
                     updatejsonData(data);
-                }).catch(error => console.error(error))
+                })
             fetch('https://jsonplaceholder.typicode.com/users')
                 .then(response => response.json())
                 .then(data => {
                     updateuserData(data);
-                }).catch(error => console.error(error))
+                })
         }
     }, [])
 
@@ -79,7 +79,6 @@ const Indexpage = () => {
                 setloginFollowedList(matchedUsers);
             }
         } catch (error) {
-            console.log(error);
         }
     }, [cachedlogindata, userdata, cacheduserData]);
 
@@ -100,7 +99,6 @@ const Indexpage = () => {
                 matchedUsers.reverse();
                 setloginFollowedTrendsList(matchedUsers);
             } catch (error) {
-                console.log(error);
             }
         } else if (resgisteraddfollowed && cachedjsonData) {
             try {
@@ -118,7 +116,6 @@ const Indexpage = () => {
                 matchedUsers.reverse();
                 setloginFollowedTrendsList(matchedUsers);
             } catch (error) {
-                console.log(error);
             }
         }
 
@@ -135,10 +132,8 @@ const Indexpage = () => {
         try {
             let obj = JSON.parse(JSON.stringify(cachedlogindata));
             obj.company.catchPhrase = stateobj.text;
-            console.log('obj', obj);
             updatelogindata(obj);
         } catch (error) {
-            console.log('error', error);
         }
     };
 
@@ -157,7 +152,6 @@ const Indexpage = () => {
             setloginFollowedTrendsList(prevList => [stateobj, ...prevList]);
             updatejsonData([stateobj, ...jsondata]); // 更新 Redux store 中的 jsondata 数组
         } catch (error) {
-            console.log('error', error);
         }
     };
 
@@ -193,7 +187,7 @@ const Indexpage = () => {
                     <h2 className={styles.log}>
                     </h2>
                     <div className={styles.create}>
-                        <p>State: {cachedlogindata && cachedlogindata.company && cachedlogindata.company.catchPhrase}</p>
+                        <p>State:{cachedlogindata && cachedlogindata.company && cachedlogindata.company.catchPhrase}</p>
                         <p>{cachedlogindata && cachedlogindata.username && cachedlogindata.username}</p>
                         <div className={styles.profilePhoto}>
                             <img src="/image/tx1.jpg" alt="My Image" />

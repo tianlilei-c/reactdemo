@@ -9,13 +9,18 @@ const Trends = ({ user }) => {
 
 
     useEffect(() => {
+        console.log('动态组件拿到的信息',user);
         const timestamp = Date.now();
         const date = new Date(timestamp);
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
         const day = date.getDate();
-        setStartTime(`${year}-${month}-${day}`);
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        setStartTime(`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
     }, []);
+
 
     useEffect(() => {
         setposter(userJson.find(item => item.id === user.userId))

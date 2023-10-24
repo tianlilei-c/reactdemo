@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/16</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -145,29 +145,39 @@
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">77x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,25 +241,30 @@
 import styles from '../main.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 &nbsp;
-const Trends = <span class="fstat-no" title="function not covered" >({</span> user }) =&gt; {
-    const userJson = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >st</span>ate =&gt; <span class="cstat-no" title="statement not covered" >state.userdata)</span></span>
-    const [startTime, setStartTime] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
-    const [poster, setposter] = <span class="cstat-no" title="statement not covered" >useState(null)</span>
+const Trends = ({ user }) =&gt; {
+    const userJson = useSelector(state =&gt; state.userdata)
+    const [startTime, setStartTime] = useState(null);
+    const [poster, setposter] = useState(null)
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-        const timestamp = <span class="cstat-no" title="statement not covered" >Date.now();</span>
-        const date = <span class="cstat-no" title="statement not covered" >new Date(timestamp);</span>
-        const year = <span class="cstat-no" title="statement not covered" >date.getFullYear();</span>
-        const month = <span class="cstat-no" title="statement not covered" >date.getMonth() + 1;</span>
-        const day = <span class="cstat-no" title="statement not covered" >date.getDate();</span>
-<span class="cstat-no" title="statement not covered" >        setStartTime(`${year}-${month}-${day}`);</span>
+    useEffect(() =&gt; {
+        console.log('动态组件拿到的信息',user);
+        const timestamp = Date.now();
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        setStartTime(`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`);
     }, []);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        setposter(userJson.find(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >item.id === user.userId)</span>)</span>
+&nbsp;
+    useEffect(() =&gt; {
+        setposter(userJson.find(item =&gt; item.id === user.userId))
     }, [user])
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;div className={styles.feeds}&gt;
             {/* &lt;!-- =================FEED 1=================--&gt; */}
             &lt;div className={styles.feed}&gt;
@@ -282,7 +297,7 @@ const Trends = <span class="fstat-no" title="function not covered" >({</span> us
                     &lt;/div&gt;
                     &lt;div className={styles['interaction-buttons']}&gt;
                         {user.name ? (
-                            &lt;p&gt;{user.name}&lt;/p&gt;
+<span class="branch-0 cbranch-no" title="branch not covered" >                            &lt;p&gt;{user.name}&lt;/p&gt;</span>
                         ) : (
                             poster &amp;&amp; poster.username &amp;&amp; &lt;p&gt;{poster.username}&lt;/p&gt;
                         )}
@@ -316,7 +331,7 @@ export default Trends;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-10-24T08:37:25.292Z
+                at 2023-10-24T12:41:08.343Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
