@@ -18,6 +18,7 @@ const Indexpage = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [chagetrendarr, setchagetrendarr] = useState(false);
     const [SearchEmpty, setchageSearchEmpty] = useState(false);
+    const [resgisteraddfollowed, setresgisteraddfollowed] = useState(false);
 
     const userdata = useSelector(state => state.userdata);
     const cacheduserData = useMemo(() => userdata, [userdata]);
@@ -34,7 +35,6 @@ const Indexpage = () => {
     const [FollowedList, setloginFollowedList] = useState([]);
 
     const [FollowedTrendsList, setloginFollowedTrendsList] = useState([]);
-
 
     const logindata = useSelector(state => state.logindata);
     const cachedlogindata = useMemo(() => logindata, [logindata]);
@@ -84,7 +84,7 @@ const Indexpage = () => {
     }, [cachedlogindata, userdata, cacheduserData]);
 
     useEffect(() => {
-        if (chagetrendarr) {
+        if (chagetrendarr && cachedjsonData) {
             try {
                 let matchedUsers = []
                 const trendsuserarr = [cachedlogindata.id];
@@ -102,8 +102,26 @@ const Indexpage = () => {
             } catch (error) {
                 console.log(error);
             }
-
+        } else if (resgisteraddfollowed && cachedjsonData) {
+            try {
+                let matchedUsers = []
+                const trendsuserarr = [cachedlogindata.id];
+                const updatedTrendsUserArr = [
+                    ...trendsuserarr,
+                    ...FollowedList.map(item => item.id)
+                ];
+                cachedjsonData.forEach(postobj => {
+                    if (updatedTrendsUserArr.includes(postobj.userId)) {
+                        matchedUsers.push(postobj);
+                    }
+                });
+                matchedUsers.reverse();
+                setloginFollowedTrendsList(matchedUsers);
+            } catch (error) {
+                console.log(error);
+            }
         }
+
     }, [chagetrendarr, FollowedList, cacheduserData, SearchEmpty]);
 
 
@@ -149,6 +167,7 @@ const Indexpage = () => {
         const filteredData = cacheduserData.filter((obj) => obj.username === addmsg.name);
         if (filteredData.length > 0) {
             setloginFollowedList(filteredData.concat(FollowedList));
+            setresgisteraddfollowed(true)
             toast.success("ADD FOLLOW SUCCESS!");
         } else {
             toast.error("Not This User")

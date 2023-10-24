@@ -6,13 +6,28 @@ const updatestate = ({ handleuptrend }) => {
     title: '',
     image: null,
     body: '',
-    time: null, // 或其他非空值
-    isTextOnly: true // 默认为 true
+    time: null,
+    isTextOnly: true,
+    name: null
   });
+
+
+
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    const user = userString ? JSON.parse(userString) : null;
+    if (user && user.name) {
+      setPost(prevPost => ({
+        ...prevPost,
+        name: user.name
+      }));
+    }
+  }, []);
 
   useEffect(() => {
     if (post.time !== null) {
-      handleuptrend(post);
+      handleuptrend(post)
+      console.log(post);
     }
   }, [post.time]);
 
@@ -34,21 +49,25 @@ const updatestate = ({ handleuptrend }) => {
   };
 
   const clearmsg = () => {
-    setPost({
+    setPost(prevPost => ({
+      ...prevPost,
       title: '',
       image: null,
       body: '',
-      isTextOnly: true // 清空表单后，将 isTextOnly 设置为 true
-    });
+      time: null,
+      isTextOnly: true
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const timestamp = Date.now();
-    setPost(prevPost => ({
-      ...prevPost,
-      time: timestamp
-    }));
+    if (post.title !== '' && post.body !== '') {
+      setPost(prevPost => ({
+        ...prevPost,
+        time: timestamp
+      }));
+    }
   };
 
   return (

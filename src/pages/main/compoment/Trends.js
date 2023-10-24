@@ -3,12 +3,23 @@ import styles from '../main.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Trends = ({ user }) => {
-    const logindata = useSelector(state => state.logindata);
+    const userJson = useSelector(state => state.userdata)
     const [startTime, setStartTime] = useState(null);
+    const [poster, setposter] = useState(null)
+
+
     useEffect(() => {
         const timestamp = Date.now();
-        setStartTime(timestamp);
+        const date = new Date(timestamp);
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        setStartTime(`${year}-${month}-${day}`);
     }, []);
+
+    useEffect(() => {
+        setposter(userJson.find(item => item.id === user.userId))
+    }, [user])
     return (
         <div className={styles.feeds}>
             {/* <!-- =================FEED 1=================--> */}
@@ -41,7 +52,12 @@ const Trends = ({ user }) => {
                         </button>
                     </div>
                     <div className={styles['interaction-buttons']}>
-                        <p>{logindata.username}</p>
+                        {user.name ? (
+                            <p>{user.name}</p>
+                        ) : (
+                            poster && poster.username && <p>{poster.username}</p>
+                        )}
+
                         <p>{user.time ? user.time : startTime}</p>
                     </div>
                     <div className={styles.bookmark}>
